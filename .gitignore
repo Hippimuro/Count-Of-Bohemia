@@ -1,0 +1,13 @@
+# ignore build dirs
+build
+lib/*
+
+#ignore executables
+bin/*
+
+#etc is for my personal notes really.
+etc/*
+
+#Mac or vim specific
+*.swp
+.DS_Store
