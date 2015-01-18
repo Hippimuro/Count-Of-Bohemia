@@ -5,8 +5,9 @@ lib/*
 #ignore executables
 bin/*
 
-#etc is for my personal notes really.
+#personal notes really.
 etc/*
+TODO
 
 #Mac or vim specific
 *.swp
