@@ -10,21 +10,24 @@
  *         Github:  Rimminen
  *        Created:  22.11.2014 15.52.18
  *       Revision:  none
- *       Compiler:  clang plus plus
+ *       Compiler:  clang plus plus or gee plus plus
  *
  * =====================================================================================
  */
 
-#include <SDL2/SDL.h>
+#include "thirdincludes.h"
 #include "texture.h"
 
-Vtexture::VTexture() {
+VTexture::VTexture() {
 }
 
+/* //disabled until I find a way to include deps
 void VTexture::setBlendMode(SDL_BlendMode blend) {
         SDL_SetTextureBlendMode(hardwareTex, blend);
 }
 
+
 void VTexture::setAlpha(Uint8 alpha) {
         SDL_SetTextureAplhaMod(hardwareTex, alpha);
 }
+*/
