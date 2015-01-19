@@ -44,8 +44,13 @@ SDL_Renderer* gameRenderer = NULL;
 SDL_Event event;
 
 int main(int argc, char* argv[]) {
+<<<<<<< HEAD
 	const char* imagePath = "res/image.bmp";
         const char* countPath = "res/count_wedding.bmp";
+=======
+	const char* imagePath = "bin/image.bmp";
+        const char* countPath = "bin/count_wedding.bmp";
+>>>>>>> 85ce130eefb7ce19a025f88987e5e542abd8044e
 	//SDL_Texture* imageTexture = NULL;
         SDL_Texture* countTexture = NULL;
         vector<SDL_Texture*> textureBatch;
