@@ -15,10 +15,7 @@
  * =====================================================================================
  */
 
-#include <iostream>
-#include <string>
-#include <SDL2/SDL.h>
-#include <vector>
+#include "thirdincludes.h"
 
 using std::string;
 using std::cout;
@@ -35,7 +32,7 @@ const int SCREENHEIGHT = 480;
 bool initSDL();
 void logError(string);
 void renderTexture(SDL_Texture*, SDL_Renderer*, int x, int y);
-SDL_Texture* loadTexture(const string&, SDL_Renderer*);
+SDL_Texture* loadTexture(const char*, SDL_Renderer*);
 
 /* declaring all SDL elements (window, surface, image) 
  * also pointing to NULL to check for errors and enhance performance
@@ -47,8 +44,8 @@ SDL_Renderer* gameRenderer = NULL;
 SDL_Event event;
 
 int main(int argc, char* argv[]) {
-	const string imagePath = "image.bmp";
-        const string countPath = "count_wedding.bmp";
+	const char* imagePath = "res/image.bmp";
+        const char* countPath = "res/count_wedding.bmp";
 	//SDL_Texture* imageTexture = NULL;
         SDL_Texture* countTexture = NULL;
         vector<SDL_Texture*> textureBatch;
@@ -124,10 +121,9 @@ void logError(string message) {
 	cout << "Error: " << message << endl << SDL_GetError() << endl;
 }
 
-SDL_Texture* loadTexture(const string &filepath, SDL_Renderer *renderer) {
+SDL_Texture* loadTexture(const char* filepath, SDL_Renderer *renderer) {
 	SDL_Texture* texture = NULL; // if an error happens, we won't be rendering an old texture
-	
-	SDL_Surface* loadedImage = SDL_LoadBMP(filepath.c_str());
+	SDL_Surface* loadedImage = SDL_LoadBMP(filepath);
 	if(loadedImage == NULL) {
 		logError("Couldn't load image");
 	} 
