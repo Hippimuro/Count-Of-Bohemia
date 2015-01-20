@@ -16,6 +16,8 @@
  */
 
 #include "thirdincludes.h"
+#include "texture.h"
+#include "error.h"
 
 using std::string;
 using std::cout;
@@ -30,30 +32,19 @@ const int SCREENHEIGHT = 480;
  * and if everything went correctly returns true
  */
 bool initSDL();
-void logError(string);
-void renderTexture(SDL_Texture*, SDL_Renderer*, int x, int y);
-SDL_Texture* loadTexture(const char*, SDL_Renderer*);
+// void renderTexture(SDL_Texture*, SDL_Renderer*, int x, int y);
+// SDL_Texture* loadTexture(const string, SDL_Renderer*);
 
 /* declaring all SDL elements (window, surface, image) 
  * also pointing to NULL to check for errors and enhance performance
  */
 SDL_Window* window = NULL;
-SDL_Surface* screenSurface = NULL;
-SDL_Surface* background = NULL;
 SDL_Renderer* gameRenderer = NULL;
 SDL_Event event;
 
 int main(int argc, char* argv[]) {
-<<<<<<< HEAD
-	const char* imagePath = "res/image.bmp";
-        const char* countPath = "res/count_wedding.bmp";
-=======
-	const char* imagePath = "bin/image.bmp";
-        const char* countPath = "bin/count_wedding.bmp";
->>>>>>> 85ce130eefb7ce19a025f88987e5e542abd8044e
-	//SDL_Texture* imageTexture = NULL;
-        SDL_Texture* countTexture = NULL;
-        vector<SDL_Texture*> textureBatch;
+        const string countPath = "res/count.bmp";
+        vector<VTexture> textureBatch;
 
 	if(!initSDL()) {
 		return 1;
@@ -61,9 +52,10 @@ int main(int argc, char* argv[]) {
 		cout << "SDL and window initialized correctly!" << endl;
 	}
 
-	//imageTexture = loadTexture(imagePath, gameRenderer);
-        countTexture = loadTexture(countPath, gameRenderer);
-        //textureBatch.push_back(imageTexture);
+        SDL_SetRenderDrawColor(gameRenderer, 255, 255, 255, 255);
+
+        VTexture countTexture;
+        countTexture.loadFromFile(countPath, gameRenderer);
         textureBatch.push_back(countTexture);
         const Uint8* keystate = SDL_GetKeyboardState(NULL);
 	
@@ -81,12 +73,14 @@ int main(int argc, char* argv[]) {
                         }
 		}
 		SDL_RenderClear(gameRenderer);
-                for(auto texture : textureBatch) {
-                        SDL_RenderCopy(gameRenderer, texture, NULL, NULL);
+                for(auto vtex : textureBatch) {
+                        vtex.render(123, 400, gameRenderer);
                 }
 		SDL_RenderPresent(gameRenderer);
 	}
-	//SDL_DestroyTexture(imageTexture);
+        for(auto vtex : textureBatch) {
+                vtex.free();
+        }
 	SDL_DestroyRenderer(gameRenderer);
 	SDL_DestroyWindow(window);
 
@@ -122,13 +116,10 @@ bool initSDL() {
 	return success;
 }
 
-void logError(string message) {
-	cout << "Error: " << message << endl << SDL_GetError() << endl;
-}
-
-SDL_Texture* loadTexture(const char* filepath, SDL_Renderer *renderer) {
+/*
+SDL_Texture* loadTexture(const string filepath, SDL_Renderer *renderer) {
 	SDL_Texture* texture = NULL; // if an error happens, we won't be rendering an old texture
-	SDL_Surface* loadedImage = SDL_LoadBMP(filepath);
+	SDL_Surface* loadedImage = SDL_LoadBMP(filepath.c_str());
 	if(loadedImage == NULL) {
 		logError("Couldn't load image");
 	} 
@@ -139,7 +130,8 @@ SDL_Texture* loadTexture(const char* filepath, SDL_Renderer *renderer) {
 	}
 	return texture;
 }
-
+*/
+/*
 void renderTexture(SDL_Texture* texture, SDL_Renderer* renderer, int x, int y) {
 	SDL_Rect position;
 	position.x = x;
@@ -148,3 +140,4 @@ void renderTexture(SDL_Texture* texture, SDL_Renderer* renderer, int x, int y) {
 	SDL_QueryTexture(texture, NULL, NULL, &position.w, &position.h); // get the width and height of texture
 	SDL_RenderCopy(renderer, texture, NULL, &position);
 }
+*/

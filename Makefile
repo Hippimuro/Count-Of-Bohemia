@@ -13,7 +13,7 @@ TARGET = bin/app
 SRCEXT = cpp
 SOURCES = $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
 OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
-CFLAGS := -g -std=c++1y -w # -Wall
+CFLAGS := -g -std=c++1y -w -v # -Wall
 LIB := -lSDL2
 INC := -I include
 

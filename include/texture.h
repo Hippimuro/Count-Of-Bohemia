@@ -18,21 +18,17 @@
 
 #include "thirdincludes.h"
 
-using std::cout;
-using std::endl;
-using std::string;
-
 class VTexture {
         public:
                 VTexture();
-                ~VTexture();
+                ~VTexture(); // this somehow is regarded as undefined symbols
 
-                bool LoadFromFile(string path);
+                bool loadFromFile(const string path, SDL_Renderer* renderer);
                 void free();
                 void setColor(Uint8 r, Uint8 g, Uint8 b);
-                //void setBlendMode(SDL_BlendMode blend); //disabled until I find a way to include deps
+                //void setBlendMode(SDL_BlendMode blend); //disabled util find way to include deps
                 //void setAlpha(Uint8 alpha); // BlendMode needs to be set to set alpha
-                void render(int x, int y, SDL_Rect* clip = NULL);
+                void render(int x, int y, SDL_Renderer* renderer, SDL_Rect* clip = NULL);
                 
                 int getWidth();
                 int getHeight();
