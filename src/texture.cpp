@@ -28,7 +28,7 @@ VTexture::VTexture() {
 }
 
 VTexture::~VTexture() {
-        cout << "destroying VTexture" << endl;
+          
 }
 
 /* //disabled until I find a way to include deps
@@ -65,10 +65,11 @@ void VTexture::free() {
         SDL_DestroyTexture(hardwareTex);
 }
 
-void VTexture::render(int x, int y, SDL_Renderer* renderer, SDL_Rect* clip)  {
-        clip->x = x;
-        clip->y = y;
+void VTexture::render(int x, int y, SDL_Renderer* renderer)  {
+        SDL_Rect clip;
+        clip.x = x;
+        clip.y = y;
 
-        SDL_QueryTexture(hardwareTex, NULL, NULL, &clip->w, &clip->h);
-        SDL_RenderCopy(renderer, hardwareTex, NULL, clip);
+        SDL_QueryTexture(hardwareTex, NULL, NULL, &clip.w, &clip.h);
+        SDL_RenderCopy(renderer, hardwareTex, NULL, &clip);
 }

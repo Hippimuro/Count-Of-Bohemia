@@ -16,11 +16,7 @@
  */
 #pragma once
 
-class VTexture;
-
-#include <SDL2/SDL.h>
-#include <string>
-#include <vector>
+#include "thirdincludes.h"
 #include "texture.h"
 
 using std::cout;
@@ -35,16 +31,21 @@ class VActor {
                 void free();
                 void draw();
                 
-                int getPosX();
-                int getPosY();
+                int getX();
+                int getY();
 
                 void setPos(int x, int y);
 
-                int draw();
+                void draw();
+
+                void addVelocity(int x, int y);
                 
         private:
                 VTexture vTex;
 
                 int posX;
                 int posY;
+                int velX;
+                int velY;
+
 };

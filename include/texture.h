@@ -30,7 +30,7 @@ class VTexture {
                 void setColor(Uint8 r, Uint8 g, Uint8 b);
                 //void setBlendMode(SDL_BlendMode blend); //disabled util find way to include deps
                 //void setAlpha(Uint8 alpha); // BlendMode needs to be set to set alpha
-                void render(int x, int y, SDL_Renderer* renderer, SDL_Rect* clip = NULL);
+                void render(int x, int y, SDL_Renderer* renderer);
                 
                 int getWidth();
                 int getHeight();
