@@ -23,6 +23,14 @@ using std::cout;
 using std::endl;
 using std::string;
 
+VTexture::VTexture() {
+        cout << "creating VTexture" << endl;
+}
+
+VTexture::~VTexture() {
+        cout << "destroying VTexture" << endl;
+}
+
 /* //disabled until I find a way to include deps
 void VTexture::setBlendMode(SDL_BlendMode blend) {
         SDL_SetTextureBlendMode(hardwareTex, blend);

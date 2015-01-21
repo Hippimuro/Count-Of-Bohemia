@@ -1,9 +1,15 @@
 #!/usr/bin/python
 
 import sys, os
+import platform
 
 if not os.path.exists("./bin"):
+    print "mkdir .bin"
     os.makedirs("./bin")
 
 if not os.path.exists("./build"):
+    print "mkdir .build"
     os.makedirs("./build")
+
+print "Configure succesful"
+print "Target platform: {:10}".format(platform.platform())

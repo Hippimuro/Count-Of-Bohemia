@@ -18,6 +18,8 @@
 
 #include "thirdincludes.h"
 
+using std::string;
+
 class VTexture {
         public:
                 VTexture();
